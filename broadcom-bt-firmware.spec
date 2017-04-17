@@ -73,6 +73,7 @@ popd
 
 modprobe -r btusb
 modprobe btusb
+hciconfig hci0 up
 dmesg | grep -i 'blu'
 
 %postun 
