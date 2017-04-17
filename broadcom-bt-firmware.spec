@@ -18,7 +18,7 @@ Requires:	pulseaudio-module-bluetooth
 Recommends:	pavucontrol 
 Recommends:	bluez-hid2hci
 
-License:	Proprietary, only for exclusive uses of BROADCOM products
+License:	Proprietary, only for exclusive uses of BROADCOM products and MIT
 Group:		System/Kernel and hardware
 URL:		https://github.com/winterheart/broadcom-bt-firmware
 
