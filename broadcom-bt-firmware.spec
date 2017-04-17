@@ -16,6 +16,7 @@ Requires:	usbutils
 Requires:	bluez
 Requires:	pulseaudio-module-bluetooth
 Recommends:	pavucontrol 
+Recommends:	bluez-hid2hci
 
 License:	Proprietary, only for exclusive uses of BROADCOM products
 Group:		System/Kernel and hardware
@@ -46,8 +47,6 @@ Enable=Source,Sink,Media,Socket' > $RPM_BUILD_ROOT/etc/bluetooth/audio.conf
 
 %post
 # Why the latest kernel in Fedora requires a BCM.hcd?
-
-
 set -x
 
 tmp=$(mktemp -d)
