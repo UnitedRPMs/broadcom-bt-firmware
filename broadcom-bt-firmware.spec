@@ -2,14 +2,14 @@
 %global _firmwarepath	/usr/lib/firmware
 
 #globals for broadcom-bt-firmware
-%global gitdate 20170414
-%global commit0 e873a265aa3ffb8ef5d8ea3ed7ed64a9651e17f6
+%global gitdate 20180321
+%global commit0 c0bd928b8ae5754b6077c99afe6ef5c949a58f32 
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global gver .%{gitdate}git%{shortcommit0}
+%global gver .git%{shortcommit0}
 
 Summary:	Firmware of Broadcom WIDCOMM® Bluetooth devices
 Name:		broadcom-bt-firmware
-Version:	12.0.1.1011
+Version:	12.0.1.1012
 Release:	1%{?gver}%{?dist}
 Source0:	https://github.com/winterheart/broadcom-bt-firmware/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 Requires:	usbutils
@@ -90,6 +90,9 @@ rm -rf %{buildroot}
 %{_sysconfdir}/bluetooth/audio.conf
 
 %changelog
+
+* Wed Mar 21 2018 - David Vasquez <davidva AT tutanota DOT com> 12.0.1.1012-1.gitc0bd928
+- Updated to 12.0.1.1012-1.gitc0bd928
 
 * Fri Apr 14 2017 - David Vasquez <davidva AT tutanota DOT com> 12.0.1.1011-1
 - Initial build
