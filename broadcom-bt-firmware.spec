@@ -53,6 +53,10 @@ touch $RPM_BUILD_ROOT/%{_firmwarepath}/brcm/BCM.hcd
 # Repeat, Why the latest kernel in Fedora requires a BCM.hcd?
 set -x
 
+# First, we need to delete obsoletes BCM's
+modprobe -r btusb
+
+# Start the magic
 tmp=$(mktemp -d)
 
 trap cleanup EXIT
@@ -75,7 +79,6 @@ fi
 done <"$file"
 popd
 
-modprobe -r btusb
 modprobe btusb
 hciconfig hci0 up
 dmesg | grep -i 'blu'
