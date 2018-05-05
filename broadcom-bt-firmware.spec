@@ -10,7 +10,7 @@
 Summary:	Firmware of Broadcom WIDCOMM® Bluetooth devices
 Name:		broadcom-bt-firmware
 Version:	12.0.1.1012
-Release:	1%{?gver}%{?dist}
+Release:	2%{?gver}%{?dist}
 Source0:	https://github.com/winterheart/broadcom-bt-firmware/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 Requires:	usbutils
 Requires:	bluez
@@ -45,8 +45,12 @@ install -D LICENSE.broadcom_bcm20702 $RPM_BUILD_ROOT/%{_datadir}/licenses/%{name
 echo '[General]
 Enable=Source,Sink,Media,Socket' > $RPM_BUILD_ROOT/etc/bluetooth/audio.conf
 
-%post
 # Why the latest kernel in Fedora requires a BCM.hcd?
+touch $RPM_BUILD_ROOT/%{_firmwarepath}/brcm/BCM.hcd
+
+
+%post
+# Repeat, Why the latest kernel in Fedora requires a BCM.hcd?
 set -x
 
 tmp=$(mktemp -d)
@@ -87,9 +91,13 @@ rm -rf %{buildroot}
 %files 
 %{_datadir}/licenses/%{name}/LICENSE
 %{_firmwarepath}/brcm/*.hcd
+%ghost %{_firmwarepath}/brcm/BCM.hcd
 %{_sysconfdir}/bluetooth/audio.conf
 
 %changelog
+
+* Fri May 04 2018 - David Vasquez <davidva AT tutanota DOT com> 12.0.1.1012-2.gitc0bd928
+- BCM fix
 
 * Wed Mar 21 2018 - David Vasquez <davidva AT tutanota DOT com> 12.0.1.1012-1.gitc0bd928
 - Updated to 12.0.1.1012-1.gitc0bd928
