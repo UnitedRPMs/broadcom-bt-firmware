@@ -10,7 +10,7 @@
 Summary:	Firmware of Broadcom WIDCOMM® Bluetooth devices
 Name:		broadcom-bt-firmware
 Version:	12.0.1.1012
-Release:	2%{?gver}%{?dist}
+Release:	3%{?gver}%{?dist}
 Source0:	https://github.com/winterheart/broadcom-bt-firmware/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 Requires:	usbutils
 Requires:	bluez
@@ -95,9 +95,12 @@ rm -rf %{buildroot}
 %{_datadir}/licenses/%{name}/LICENSE
 %{_firmwarepath}/brcm/*.hcd
 %ghost %{_firmwarepath}/brcm/BCM.hcd
-%{_sysconfdir}/bluetooth/audio.conf
+%config %{_sysconfdir}/bluetooth/audio.conf
 
 %changelog
+
+* Thu Jul 26 2018 - David Va <davidva AT tuta DOT io> 12.0.1.1012-3.gitc0bd928
+- Editable config Audio (A2DP sink)
 
 * Fri May 04 2018 - David Vasquez <davidva AT tutanota DOT com> 12.0.1.1012-2.gitc0bd928
 - BCM fix
