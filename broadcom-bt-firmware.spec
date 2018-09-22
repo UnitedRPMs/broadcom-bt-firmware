@@ -2,7 +2,7 @@
 %global _firmwarepath	/usr/lib/firmware
 
 #globals for broadcom-bt-firmware
-%global gitdate 20180321
+%global gitdate 20180921
 %global commit0 c0bd928b8ae5754b6077c99afe6ef5c949a58f32 
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
@@ -10,8 +10,9 @@
 Summary:	Firmware of Broadcom WIDCOMM® Bluetooth devices
 Name:		broadcom-bt-firmware
 Version:	12.0.1.1012
-Release:	3%{?gver}%{?dist}
+Release:	4%{?gver}%{?dist}
 Source0:	https://github.com/winterheart/broadcom-bt-firmware/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Patch:		42c635dbd99fc1f65596b3dd0418a8bc78e7ee31.patch
 Requires:	usbutils
 Requires:	bluez
 Requires:	pulseaudio-module-bluetooth
@@ -29,7 +30,7 @@ for Linux kernel. Since February 2017, Broadcom ships their drivers directly
 to Windows Update service. 
 
 %prep
-%autosetup -n %{name}-%{commit0} 
+%autosetup -n %{name}-%{commit0} -p1
 
 %build
 
@@ -98,6 +99,9 @@ rm -rf %{buildroot}
 %config %{_sysconfdir}/bluetooth/audio.conf
 
 %changelog
+
+* Fri Sep 21 2018 - David Va <davidva AT tuta DOT io> 12.0.1.1012-4.gitc0bd928
+- added BCM43142A0-14e4-4365 firmware
 
 * Thu Jul 26 2018 - David Va <davidva AT tuta DOT io> 12.0.1.1012-3.gitc0bd928
 - Editable config Audio (A2DP sink)
