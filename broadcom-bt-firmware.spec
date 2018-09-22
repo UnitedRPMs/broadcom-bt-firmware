@@ -12,7 +12,7 @@ Name:		broadcom-bt-firmware
 Version:	12.0.1.1012
 Release:	4%{?gver}%{?dist}
 Source0:	https://github.com/winterheart/broadcom-bt-firmware/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
-Patch:		42c635dbd99fc1f65596b3dd0418a8bc78e7ee31.patch
+Source1:	https://github.com/farena/broadcom-bt-firmware/blob/master/brcm/BCM43142A0-14e4-4365.hcd
 Requires:	usbutils
 Requires:	bluez
 Requires:	pulseaudio-module-bluetooth
@@ -30,7 +30,8 @@ for Linux kernel. Since February 2017, Broadcom ships their drivers directly
 to Windows Update service. 
 
 %prep
-%autosetup -n %{name}-%{commit0} -p1
+%autosetup -n %{name}-%{commit0} 
+cp -n %{S:1} brcm/
 
 %build
 
