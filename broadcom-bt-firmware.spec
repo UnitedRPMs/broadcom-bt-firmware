@@ -12,7 +12,7 @@ Name:		broadcom-bt-firmware
 Version:	12.0.1.1012
 Release:	4%{?gver}%{?dist}
 Source0:	https://github.com/winterheart/broadcom-bt-firmware/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
-Source1:	https://github.com/farena/broadcom-bt-firmware/blob/master/brcm/BCM43142A0-14e4-4365.hcd
+Source1:	https://raw.githubusercontent.com/farena/broadcom-bt-firmware/master/brcm/BCM43142A0-14e4-4365.hcd
 Requires:	usbutils
 Requires:	bluez
 Requires:	pulseaudio-module-bluetooth
