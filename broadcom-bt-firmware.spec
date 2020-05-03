@@ -2,15 +2,15 @@
 %global _firmwarepath	/usr/lib/firmware
 
 #globals for broadcom-bt-firmware
-%global gitdate 20180921
-%global commit0 c0bd928b8ae5754b6077c99afe6ef5c949a58f32 
+%global gitdate 20200502
+%global commit0 177bd01a40b840cb7f74abc4cd5f5e2106df8f42 
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
 
 Summary:	Firmware of Broadcom WIDCOMM® Bluetooth devices
 Name:		broadcom-bt-firmware
-Version:	12.0.1.1012
-Release:	4%{?gver}%{?dist}
+Version:	12.0.1.1105
+Release:	7%{?gver}%{?dist}
 Source0:	https://github.com/winterheart/broadcom-bt-firmware/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 Source1:	https://raw.githubusercontent.com/farena/broadcom-bt-firmware/master/brcm/BCM43142A0-14e4-4365.hcd
 Requires:	usbutils
@@ -100,6 +100,9 @@ rm -rf %{buildroot}
 %config %{_sysconfdir}/bluetooth/audio.conf
 
 %changelog
+
+* Sat May 02 2020 - David Va <davidva AT tuta DOT io> 12.0.1.1105-7.git177bd01
+- Updated to 12.0.1.1105
 
 * Fri Sep 21 2018 - David Va <davidva AT tuta DOT io> 12.0.1.1012-4.gitc0bd928
 - added BCM43142A0-14e4-4365 firmware

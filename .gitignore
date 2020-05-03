@@ -4,3 +4,5 @@ RPMS/*
 SPECS/*
 SRPMS/*
 broadcom-bt-firmware*.tar.gz
+.directory
+*.rpm
